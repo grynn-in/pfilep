@@ -2,20 +2,21 @@ const fs = require("fs");
 
 /**
  * Copy file from source to destination
- * @param {string} src 
- * @param {String | Mode} default : fs.constants.F_OK 
+ * @param {String} Path to file
+ * @param {Integer} Mode
  * @returns {Promise} 
  */
 
- function access(path, mode=fs.constants.F_OK) {
+ 
+ function chmod(path, mode) {
     return new Promise ((res, rej)=> {
         fs.access (path, mode, (err) => {
             if (err) {
-                rej ("error occured : "  + err)
+                rej ("error occured"  + err)
             } else 
                 res(true);
         })
     })
  }
 
- module.exports = {access};
+ module.exports = {chmod};
